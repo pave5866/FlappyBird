@@ -95,7 +95,7 @@
       pipes.push({ x: canvas.width, y: 0, height: pipeHeight, scored: false });
 
       var score = 0;
-      var highScore = 0; // En yüksek skor için değişken ekle
+      var highScore = 0;
       var timeInSeconds = 0;
 
       var gameInterval;
@@ -108,13 +108,13 @@
         pipeHeight =
           Math.floor(Math.random() * (canvas.height - pipeGap - 100)) + 50;
         pipes.push({
-          x: canvas.width + pipeWidth, // Pipe offscreen to the right initially
+          x: canvas.width + pipeWidth,
           y: 0,
           height: pipeHeight,
           scored: false,
         });
         pipes.push({
-          x: canvas.width + pipeWidth, // Pipe offscreen to the right initially
+          x: canvas.width + pipeWidth,
           y: pipeHeight + pipeGap,
           height: canvas.height - pipeHeight - pipeGap,
           scored: false,
@@ -161,9 +161,9 @@
             ctx.drawImage(
               pipeImg,
               pipe.x,
-              -pipe.y - pipe.height, // Draw the image flipped vertically
+              -pipe.y - pipe.height,
               pipeWidth,
-              pipe.height // Draw the full height of the pipe
+              pipe.height
             );
             ctx.restore();
           } else {
@@ -174,7 +174,6 @@
 
       function movePipes() {
         for (var i = pipes.length - 1; i >= 0; i--) {
-          // Iterate backwards to safely remove pipes
           var pipe = pipes[i];
           pipe.x -= 2;
           if (pipe.x < -pipeWidth) {
@@ -188,13 +187,13 @@
           pipeHeight =
             Math.floor(Math.random() * (canvas.height - pipeGap - 100)) + 50;
           pipes.push({
-            x: canvas.width + pipeWidth, // Pipe offscreen to the right initially
+            x: canvas.width + pipeWidth,
             y: 0,
             height: pipeHeight,
             scored: false,
           });
           pipes.push({
-            x: canvas.width + pipeWidth, // Pipe offscreen to the right initially
+            x: canvas.width + pipeWidth,
             y: pipeHeight + pipeGap,
             height: canvas.height - pipeHeight - pipeGap,
             scored: false,
@@ -228,12 +227,10 @@
           }
         }
 
-        // En yüksek skoru kontrol et ve gerekirse güncelle
         if (score > highScore) {
           highScore = score;
         }
 
-        // Skorları güncelle
         document.getElementById("scoreContainer").innerHTML =
           "En Yüksek Skor: <span id='highScore'>" +
           highScore +
